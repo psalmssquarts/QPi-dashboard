@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+body {
+    margin: 0;
+    padding: 20px;
+    background: #f4f6f9;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+    text-align: center;
+    color: #2e7d32;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.plant-card {
+    width: 280px;
+    background:  white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    transition: 3s;
 }
 
-.App-link {
-  color: #61dafb;
+.plant-card:hover{
+  transform: translateX(-5px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.plant-card h2 {
+    color: #2e7d32;
+}
+
+.filter-btn,.refresh-btn {
+    display: block;
+    margin: 20px auto; 
+    padding: 10px 20px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: static;
+}
+
+.filter-btn,.refresh-btn:hover {
+    background-color: #1b5e20; 
+}
+
+.good{
+
+    color:white;
+    background:green;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    display:inline-block;
+
+}
+
+.warning{
+
+    color:black;
+
+    background:gold;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    display:inline-block;
+
+}
+
+.critical{
+
+    color:white;
+
+    background:red;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    display:inline-block;
+
 }
