@@ -2,7 +2,8 @@ import PlantCard from "./PlantCard";
 import plantsData from "../data/plants";
 import getHealthStatus from "../utils/healthLogic";
 import { useState,useEffect } from "react";
-import logo from"../logo.png";
+import logo from"../assets/logo.png";
+import backgroundImage from "../assets/134.jpg";
 
 function Dashboard() {
     
@@ -55,7 +56,7 @@ useEffect(() => {
   return (
   <div className="dashboard-container">
     <header>
-    <div>
+    <div className="intro">
     <h1>QPi PlantCare Dashboard</h1> 
     <p>Real-time monitoring of plant health</p>
     </div>
@@ -66,17 +67,17 @@ useEffect(() => {
     <section className="stats">
 
         <div className="stat-card">
-        <h3>Total Plants</h3>
+        <h3> 🌱Total Plants</h3>
          <h2>{totalPlants}</h2>
          </div>
 
      <div className="stat-card">
-        <h3>Healthy</h3>
+        <h3>💚Healthy</h3>
          <h2 style={{color:'#2e7d32'}}>{healthyPlants}</h2>
          </div>
 
      <div className="stat-card">
-        <h3>Critical</h3>
+        <h3>⚠️Critical</h3>
          <h2 style={{color:'red'}}>{criticalPlants}</h2>
          </div>
 
@@ -90,7 +91,7 @@ useEffect(() => {
 </button>
 
 <button onClick={refreshPlants} className="refresh-btn">
-    Refresh Data
+    🔃Refresh Data
 </button>
 
     </section> 
