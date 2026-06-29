@@ -49,7 +49,7 @@ useEffect(() => {
 
     return () => clearInterval(timer);
 
-}, [refreshPlants]);   
+}, []);   
    
  
   return (
@@ -87,10 +87,6 @@ useEffect(() => {
     onClick={() => setShowCritical(!showCritical)} className="filter-btn">
 
     {showCritical ? "Show All Plants" : "Show Critical Plants"}
-</button>
-
-<button onClick={refreshPlants} className="refresh-btn">
-    🔃Refresh Data
 </button>
 
     </section> 

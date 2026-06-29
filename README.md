@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# 🌿 QPi PlantCare Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Architecture
 
-## Available Scripts
+src/
+│
+├── assets/
+│   ├── qpi-logo.png
+│   └── farm-background.jpg
+│
+├── components/
+│   ├── Dashboard.js
+│   └── PlantCard.js
+│
+├── data/
+│   └── plants.js
+│
+├── utils/
+│   └── healthLogic.js
+│
+├── App.js
+├── App.css
+└── index.js
 
-In the project directory, you can run:
+## Component Responsibilities
 
-### `npm start`
+### App.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The root component of the application. It renders the `Dashboard` component and serves as the application's entry point.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Dashboard.js
 
-### `npm test`
+The `Dashboard` component manages the main interface of the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Its responsibilities include:
 
-### `npm run build`
+* Displaying the dashboard title and QPi logo.
+* Displaying summary statistics (Total Plants, Healthy Plants, Critical Plants).
+* Rendering the **Show Critical Plants** button.
+* Rendering all plant cards.
+* Managing the application's state.
+* Automatically refreshing sensor data using `useEffect`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### PlantCard.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A reusable component responsible for displaying information about a single plant.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Each card displays:
 
-### `npm run eject`
+* Plant name
+* Moisture level
+* Temperature
+* Light intensity
+* Plant health status
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The component receives its data from the Dashboard using **props**.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Automatic Data Refresh
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The dashboard automatically refreshes plant sensor values using React's `useEffect` hook together with a timer of 10 seconds. This simulates real-time monitoring of plants .
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## User Interaction
 
-## Learn More
+The dashboard includes a **Show Critical Plants** button that allows users to filter the displayed plants and focus only on those requiring immediate attention.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## healthLogic.js
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+healthLogic.js contains the business logic used to determine whether a plant's status is Good, Warning, or Critical based on its moisture level. Separating this logic from the UI improves maintainability and makes the code easier to reuse.
