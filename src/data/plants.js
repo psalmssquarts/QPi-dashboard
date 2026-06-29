@@ -1,7 +1,7 @@
 const plants = [
   {
     id: 1,
-    name: "Tomatoes",
+    name: "Tomatoe",
     moisture: 75,
     temperature: 24,
     light: 80,
@@ -15,7 +15,7 @@ const plants = [
   },
   {
     id: 3,
-    name: "Oranges",
+    name: "Orange",
     moisture: 45,
     temperature: 22,
     light: 65,

@@ -1,7 +1,8 @@
 import PlantCard from "./PlantCard";
 import plantsData from "../data/plants";
 import getHealthStatus from "../utils/healthLogic";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import logo from"../logo.png";
 
 function Dashboard() {
     
@@ -16,11 +17,8 @@ function refreshPlants() {
 const updatedPlants = plants.map((plant) => {
 
         return {
-
             ...plant,
-
             moisture: Math.floor(Math.random() * 100) + 1
-
         };
 
     });
@@ -28,17 +26,74 @@ const updatedPlants = plants.map((plant) => {
     setPlants(updatedPlants);
 
 }
+
+const totalPlants = plants.length;
+
+const criticalPlants =
+    plants.filter(
+        plant => plant.moisture < 30
+    ).length;
+
+const healthyPlants =
+    plants.filter(
+        plant => plant.moisture > 60
+    ).length;
+
+useEffect(() => {
+
+    const timer = setInterval(() => {
+
+        refreshPlants();
+
+    }, 10000);
+
+    return () => clearInterval(timer);
+
+}, []);   
    
  
   return (
-  <div>
+  <div className="dashboard-container">
+    <header>
+    <div>
+    <h1>QPi PlantCare Dashboard</h1> 
+    <p>Real-time monitoring of plant health</p>
+    </div>
+    <img src={logo} alt="logo" className ="logo"/>
+    </header>
+    
 
-    <h1>QPi PlantCare Dashboard</h1>
-<button
+    <section className="stats">
+
+        <div className="stat-card">
+        <h3>Total Plants</h3>
+         <h2>{totalPlants}</h2>
+         </div>
+
+     <div className="stat-card">
+        <h3>Healthy</h3>
+         <h2 style={{color:'#2e7d32'}}>{healthyPlants}</h2>
+         </div>
+
+     <div className="stat-card">
+        <h3>Critical</h3>
+         <h2 style={{color:'red'}}>{criticalPlants}</h2>
+         </div>
+
+     </section>
+    
+   <section className="actions">
+    <button
     onClick={() => setShowCritical(!showCritical)} className="filter-btn">
 
     {showCritical ? "Show All Plants" : "Show Critical Plants"}
 </button>
+
+<button onClick={refreshPlants} className="refresh-btn">
+    Refresh Data
+</button>
+
+    </section> 
 
     <div className="dashboard">
 
@@ -56,10 +111,6 @@ const updatedPlants = plants.map((plant) => {
         ))}
 
     </div>
-<button onClick={refreshPlants} className="refresh-btn">
-    Refresh Data
-</button>
-
   </div> 
 
   );
