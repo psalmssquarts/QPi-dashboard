@@ -3,7 +3,6 @@ import plantsData from "../data/plants";
 import getHealthStatus from "../utils/healthLogic";
 import { useState,useEffect } from "react";
 import logo from"../assets/logo.png";
-import backgroundImage from "../assets/134.jpg";
 
 function Dashboard() {
     
@@ -50,7 +49,7 @@ useEffect(() => {
 
     return () => clearInterval(timer);
 
-}, []);   
+}, [refreshPlants]);   
    
  
   return (
